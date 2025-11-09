@@ -14,9 +14,6 @@
 # Linker files
 *.ilk
 
-# Debugger Files
-*.pdb
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
@@ -39,3 +36,19 @@
 
 # debug information files
 *.dwo
+*.debug
+*.pdb
+
+# Temporary files
+*.tmp
+
+# Backup files
+*.bak
+
+# Logs
+*.log
+*.log.txt
+*.log.xml
+*.log.json
+*.log.yml
+*.log.yaml
