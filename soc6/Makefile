@@ -1,12 +1,10 @@
-TDF=data-1m.txt
+# BSD make comapatible makefile for the Stack Overflow Challenge #6
+# https://stackoverflow.com/beta/challenges/79766578
 
+TDF=data-1m.txt
 CFLAGS+=-std=c99 -O3 -Wall -Werror -Wextra
 
 all: soc6 rndnf
-
-clean:
-	-rm -f soc6
-	-rm -f rndnf
 
 soc6: soc6.c
 
@@ -17,13 +15,28 @@ $(TDF): rndnf
 	wc -l $(TDF)
 
 100_random_numbers.txt: 100_random_numbers.txt.bz2
+	-rm -f 100_random_numbers.txt
 	bzip2 -dk 100_random_numbers.txt.bz2
 
 10000_random_numbers.txt: 10000_random_numbers.txt.bz2
+	-rm -f 10000_random_numbers.txt
 	bzip2 -dk 10000_random_numbers.txt.bz2
 
 1M_random_numbers.txt: 1M_random_numbers.txt.bz2
+	-rm -f 1M_random_numbers.txt
 	bzip2 -dk 1M_random_numbers.txt.bz2
+
+clean:
+	-rm -f soc6
+	-rm -f rndnf
+
+clean-data:
+	-rm -f $(TDF)
+	-rm -f 100_random_numbers.txt
+	-rm -f 10000_random_numbers.txt
+	-rm -f 1M_random_numbers.txt
+
+clean-all: clean clean-data
 
 test: soc6 $(TDF)
 	time ./soc6 $(TDF)
