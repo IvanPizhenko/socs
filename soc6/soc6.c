@@ -50,7 +50,7 @@ int main(int argc, char **argv)
     }
     fprintf(stderr, "%s: %s:%ld: invalid number: %s\n",
             argv[0], argv[1], line, buf);
-    if (in != stdin) fclose(in);
+    if (LIKELY(in != stdin)) fclose(in);
     exit(EXIT_FAILURE);
   }
 
